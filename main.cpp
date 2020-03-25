@@ -1,32 +1,37 @@
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
+#include <QApplication>
+#include <QQuickItem>
+#include <QQuickView>
+#include <QObject>
+#include <QQmlContext>
+#include <QQmlEngine>
+
+#include "mecanisme.h"
 
 
 
-
-
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QApplication app(argc, argv);
 
-    QGuiApplication app(argc, argv);
-
-    QQmlApplicationEngine engine;
+    QQuickView view{};
     const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+
+    Mecanisme partie(view);
+
+    partie.setParent(view.rootObject());
+
+    view.engine()->rootContext()->setContextProperty("vuePartie", &partie);
+
+    view.setSource(url);
+    view.show();
 
 
-
-    engine.load(url);
-
-
+    partie.debutPartie();
 
     return app.exec();
 
 
-
 }
+
+
+

@@ -1,14 +1,11 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import "Initialisation.js" as Script
+import QtQuick 2.4
 
-Window {
-    id: window
+Rectangle {
+    id: main
     visible: true
     width: 720
     height: 480
     color: "#ffffff"
-    title: qsTr("Hello World")
 
     Text {
         id: element4
@@ -63,12 +60,13 @@ Window {
             id: mouseArea
             hoverEnabled: true
             anchors.fill: parent
-            onClicked: Script.init()
+            onClicked: vuePartie.debutPartie();
         }
     }
 
     Rectangle {
         id: rectGrille
+        objectName: "rectGrille"
         y: 153
         width: 370
         height: 370
@@ -82,6 +80,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:1;anchors_x:260;invisible:true}D{i:6;anchors_x:471}D{i:9;anchors_x:88;anchors_y:45}
+    D{i:1;anchors_x:260;invisible:true}D{i:6;anchors_x:471}
 }
 ##^##*/
