@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import "Initialisation.js" as Script
 
 Window {
     id: window
@@ -8,44 +9,6 @@ Window {
     height: 480
     color: "#ffffff"
     title: qsTr("Hello World")
-
-    Rectangle {
-        id: rectangle
-        y: 140
-        width: 380
-        height: 380
-        color: "#dddddd"
-        radius: 20
-        border.color: "#ffffff"
-        border.width: 6
-        anchors.left: parent.left
-        anchors.leftMargin: 50
-        anchors.verticalCenter: parent.verticalCenter
-
-        Case {
-            id: element
-            x: 7
-            y: 277
-        }
-
-        Case {
-            id: element1
-            x: 98
-            y: 277
-        }
-
-        Case {
-            id: element2
-            x: 190
-            y: 277
-        }
-
-        Case {
-            id: element3
-            x: 282
-            y: 277
-        }
-    }
 
     Text {
         id: element4
@@ -95,11 +58,30 @@ Window {
             anchors.fill: parent
             font.pixelSize: 24
         }
+
+        MouseArea {
+            id: mouseArea
+            hoverEnabled: true
+            anchors.fill: parent
+            onClicked: Script.init()
+        }
+    }
+
+    Rectangle {
+        id: rectGrille
+        y: 153
+        width: 370
+        height: 370
+        color: "#d1d1d1"
+        radius: 20
+        anchors.left: parent.left
+        anchors.leftMargin: 50
+        anchors.verticalCenter: parent.verticalCenter
     }
 }
 
 /*##^##
 Designer {
-    D{i:1;anchors_x:260}D{i:6;anchors_x:471}D{i:9;anchors_x:88;anchors_y:45}
+    D{i:1;anchors_x:260;invisible:true}D{i:6;anchors_x:471}D{i:9;anchors_x:88;anchors_y:45}
 }
 ##^##*/

@@ -1,5 +1,5 @@
 QT += quick
-
+QT += widgets
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -28,3 +28,5 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+HEADERS +=

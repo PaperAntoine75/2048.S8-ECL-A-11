@@ -5,7 +5,7 @@ Item {
     width: 90
     height: 90
     property alias rectangleColor: fond.color
-    property alias element1Text: valeur.text
+    property alias nombre: valeur.text
     Rectangle {
         id: fond
         x: -40
