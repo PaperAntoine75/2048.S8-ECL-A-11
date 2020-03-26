@@ -7,6 +7,7 @@ Case::Case(QQuickView &v, int val,int x, int y,int tailleCase,QQuickItem * liste
 {  
 
 valeur = val;
+taille = tailleCase;
 
 const QUrl urlCase(QStringLiteral("qrc:/Case.qml"));
 
@@ -34,4 +35,21 @@ listeItem[x][y]->setProperty("y",2+y*(tailleCase+2) + py);
 
 }
 
+void Case::deplacement(int direction,Case * grille[4][4], QQuickItem * listeItem[4][4])
+{
+    if (direction==1 && y != 0){
+        y-=1;
+        int py = listeItem[x][y]->parent()->property("y").toInt();
+        listeItem[x][y]->setProperty("y",2+y*(taille+2) + py);
+    }
+    if (direction==2 && y != 3){
+        y+=1;
+    }
+    if (direction==3 && x != 0){
+        x-=1;
+    }
+    if (direction==4 && x != 3){
+        x+=1;
+    }
+}
 

@@ -14,7 +14,7 @@ class Mecanisme : public QObject
     Q_OBJECT
     public :
     Q_INVOKABLE void debutPartie();
-
+    Q_INVOKABLE void mouvementCases(int direction);
     Mecanisme(QQuickView &view);
 
 

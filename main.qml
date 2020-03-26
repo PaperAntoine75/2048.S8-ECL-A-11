@@ -61,6 +61,7 @@ Rectangle {
             hoverEnabled: true
             anchors.fill: parent
             onClicked: vuePartie.debutPartie();
+
         }
     }
 
@@ -75,6 +76,24 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 50
         anchors.verticalCenter: parent.verticalCenter
+    }
+
+    Item {
+        focus: true
+        Keys.onPressed: {
+            switch (event.key) {
+                case Qt.Key_Up:
+                vuePartie.mouvementCases(1);
+                break;
+                case Qt.Key_Down:
+                vuePartie.mouvementCases(2);
+                break;
+                case Qt.Key_Left:
+                vuePartie.mouvementCases(3);
+                case Qt.Key_Right:
+                vuePartie.mouvementCases(4);
+                }
+        }
     }
 }
 

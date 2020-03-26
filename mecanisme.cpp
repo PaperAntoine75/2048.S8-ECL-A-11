@@ -21,11 +21,17 @@ void Mecanisme::debutPartie(){
     }
     }
 }
+
+
 srand(time(NULL));
-int x1 = rand()%4;
-int x2 = rand()%4;
-int y1 = rand()%4;
-int y2 = rand()%4;
+//int x1 = rand()%4;
+//int x2 = rand()%4;
+//int y1 = rand()%4;
+//int y2 = rand()%4;
+int x1 = 0;
+int y1 = 1;
+int x2 = 1;
+int y2 = 2;
 
 while(x1 == x2 && y1 == y2){
    x2 = rand()%4;
@@ -41,4 +47,15 @@ grille[x1][y1] = new Case(view,v1,x1,y1,tailleCase,grilleItem);
 grille[x2][y2] = new Case(view,v2,x2,y2,tailleCase,grilleItem);
 
 
+}
+
+void Mecanisme::mouvementCases(int direction){
+    for(int i = 0;i<nombreLin;i++){
+    for(int j = 0;j<nombreCol;j++){
+        if(grille[i][j] != nullptr){
+            grille[i][j]->deplacement(direction,grille,grilleItem);
+    }
+    }
+
+}
 }
